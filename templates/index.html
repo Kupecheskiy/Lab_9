@@ -1,0 +1,75 @@
+<html>
+<head>
+    <title>Companies list</title>
+    <script type="text/javascript" src="/static/update.js"></script>
+    <style>
+        body {
+            background-color: #D3FFCC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 400px;
+            text-align: center;
+        }
+        
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 200px;
+        }
+        
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        
+        ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Companies list</h1>
+        <h3>You can add a work record here:</h3>
+        <form>
+            <div>
+                <input type="text" name="company_name" id="company_name">
+                <label for="company_name">Company</label>
+            </div>
+            <div>
+                <input type="text" name="term" id="term">
+                <label for="term">Working term (in months)</label>
+            </div>
+            <button onClick="addCompany()">Add</button>
+            <button onClick="clearCompanies()">Clear</button>
+        </form>
+        <ul>
+            {% for company in companies_list %}
+            <li>
+                <div>
+                    <div>{{ company['company_name'] }}</div>
+                    <div>{{ company['term'] }} months.</div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
